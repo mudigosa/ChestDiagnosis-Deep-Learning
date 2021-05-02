@@ -1,0 +1,15 @@
+{
+    "meta_data_path":"../data/",
+    "train_data_path":"../data/images/",
+    "val_data_path":"../data/images/",
+    "model_path":"./models/",
+    "metrics_path":"./metrics/",
+    "num_classes":14,
+    "train_batch_size":128,
+    "val_batch_size":128,
+    "n_epochs":10,
+    "learning_rate":0.0001,
+    "perform_validation":"True",
+    "save_model_per_epoch":"True",
+    "save_metrics":"True"
+}
