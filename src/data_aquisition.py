@@ -1,3 +1,4 @@
+import sys
 import os
 import urllib.request
 import tarfile
@@ -22,7 +23,7 @@ def download_tar_files():
 
     for idx, link in enumerate(links):
         fn = 'images_%02d.tar.gz' % (idx+1)
-        print('downloading'+fn+'...')
+        print('downloading '+fn+'...')
         urllib.request.urlretrieve(link, fn)  # download the zip file
 
     print("Download complete. Please check the checksums")
@@ -31,7 +32,7 @@ def download_tar_files():
 def extarct_images_from_tar_files(n_files=12):
     for i in range(n_files):
         filenumber = i+1
-        fn = '/content/CS598/data/images_%02d.tar.gz' % (filenumber)
+        fn = 'images_%02d.tar.gz' % (filenumber)
         print('extracting '+fn+'...')
         tar = tarfile.open(fn, "r:gz")
         tar.extractall()
@@ -47,7 +48,7 @@ if __name__ == '__main__':
         os.chdir(directory)
 
         # Download the tar files from NIH website
-        download_zip_files()
+        download_tar_files()
 
         # Extract images from the tar files
         extarct_images_from_tar_files()

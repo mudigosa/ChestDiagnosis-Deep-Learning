@@ -4,5 +4,8 @@
     "metrics_path":"./metrics/",
     "num_classes":14,
     "test_batch_size":128,
-    "trained_model_path":"./models/"
+    "trained_model_path":"./models/",
+    "use_focal_loss":"False",
+    "alpha":2,
+    "gamma":5
 }

@@ -6,6 +6,7 @@ import torch.nn as nn
 from dataset import ChestXrayDataSet
 import torchvision.transforms as transforms
 from sklearn.metrics import roc_auc_score
+from focal_loss.focal_loss import FocalLoss
 
 # Set the seed
 seed = 24
@@ -183,7 +184,11 @@ def perform_training(model,parameters):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Specify the loss function and optimizer
-    criterion=nn.BCELoss()
+    if parameters['use_focal_loss'] == 'True':
+      criterion = FocalLoss(alpha=parameters[alpha], gamma=parameters[gamma])
+    else:
+      criterion=nn.BCELoss()
+    
     optimizer = torch.optim.Adam(model.parameters(), lr=parameters['learning_rate'])
 
     # Start Training
@@ -229,8 +234,11 @@ def perform_testing(model,parameters):
     model.load_state_dict(torch.load(parameters['trained_model_path'] + parameters['model_file'],map_location=device))
     print('-----Loading Trained Model Complete-----\n')
 
-    # Specify the loss function and optimizer
-    criterion=nn.BCELoss()
+    # Specify the loss function
+    if parameters['use_focal_loss'] == 'True':
+      criterion = FocalLoss(alpha=parameters[alpha], gamma=parameters[gamma])
+    else:
+      criterion=nn.BCELoss()
 
     # Start Testing
     print('=====Model Testing Started============\n')
