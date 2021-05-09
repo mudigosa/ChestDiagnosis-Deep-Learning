@@ -6,6 +6,6 @@
     "test_batch_size":128,
     "trained_model_path":"./models/",
     "use_focal_loss":"False",
-    "alpha":2,
-    "gamma":5
+    "alpha":0.25,
+    "gamma":2
 }
