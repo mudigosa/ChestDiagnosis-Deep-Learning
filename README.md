@@ -37,9 +37,9 @@ The purpose of this API is to start the Model Training. It can be controlled usi
 
 To run, `python model_training.py <modelname ('VGG16' or 'VGG16-ATTN')> <custom parameters json file(optional)>`
 
-The trained model weights will be saved aftr each epoch in `./models` or the path specified in custom parameters file as `<epoch#-modelname.pth>`. The model metrics `loss, roc-auc` will get saved in `./metrics` or the path specified in custom parameters file as `<modelname-TRAIN-LOSS.csv.csv>` and `<modelname-TRAIN-CLASS-AUC.csv>` .
+The trained model weights will be saved aftr each epoch in `./models` or the path specified in custom parameters file as `epoch#-modelname.pth`. The model metrics `loss, roc-auc` will get saved in `./metrics` or the path specified in custom parameters file as `modelname-TRAIN-LOSS.csv.csv` and `modelname-TRAIN-CLASS-AUC.csv`.
 
-If a validation run is required during training, then set the parameter `"perform_validation":"True" `in the custom parameters json file. The validation metrics will get saved in `./metrics` or the path specified in custom parameters file as `<modelname-VAL-LOSS.csv.csv>` and `<modelname-VAL-CLASS-AUC.csv>` .
+If a validation run is required during training, then set the parameter `"perform_validation":"True" `in the custom parameters json file. The validation metrics will get saved in `./metrics` or the path specified in custom parameters file as `modelname-VAL-LOSS.csv` and `modelname-VAL-CLASS-AUC.csv` .
 
 Note: Runinng training and validation together will take lot of time, so it is advised to run validation seperately using the `Model Testing API` as described below
 
@@ -51,7 +51,7 @@ The purpose of this API is to start the Model Validation. It can be controlled u
 
 To run, `python model_testing.py <modelname <trained-model-filename> <custom parameters json file(optional)>`
 
-The validation metrics will get saved in `./metrics` or the path specified in custom parameters file as `<modelname-VAL-LOSS.csv.csv>` and `<modelname-VAL-CLASS-AUC.csv>` .
+The validation metrics will get saved in `./metrics` or the path specified in custom parameters file as `modelname-VAL-LOSS.csv` and `modelname-VAL-CLASS-AUC.csv`.
 
 ## Important Point
 - The dataset size is about 45 GB, so training and vaidation must be done using GPU. It took around 6 hours to train the model with 1 GPU.
