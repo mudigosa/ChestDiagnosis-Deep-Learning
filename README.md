@@ -35,7 +35,9 @@ To run, `python data_acquisition.py`
 
 The purpose of this API is to start the Model Training. It can be controlled using parameters that are maintained in file `train_params.json`. If required, change the parameters file.
 
-The trained model weights will be saved after each epoch in `./models` or the path specified in custom parameters file as `epoch#-modelname.pth`. The model metrics `loss, roc-auc` will get saved in `./metrics` or the path specified in custom parameters file as `modelname-TRAIN-LOSS.csv.csv` and `modelname-TRAIN-CLASS-AUC.csv`.
+The trained model weights will be saved after each epoch in `./models` or the path specified in custom parameters file as `epoch#-modelname.pth`. 
+
+The model metrics `loss, roc-auc` will get saved in `./metrics` or the path specified in custom parameters file as `modelname-TRAIN-LOSS.csv.csv` and `modelname-TRAIN-CLASS-AUC.csv`.
 
 If a validation run is required during training, then set the parameter `"perform_validation":"True" `in the custom parameters json file. The validation metrics will get saved in `./metrics` or the path specified in custom parameters file as `modelname-VAL-LOSS.csv` and `modelname-VAL-CLASS-AUC.csv` .
 
